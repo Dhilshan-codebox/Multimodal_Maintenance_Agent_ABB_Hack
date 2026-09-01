@@ -31,7 +31,7 @@ export default function App() {
   const [answer, setAnswer] = useState<any | null>(null)
   const [loading, setLoading] = useState(false)
 
-  const API_BASE = 'http://localhost:8000'
+  const API_BASE = import.meta.env.VITE_API_BASE || ''
 
   useEffect(() => {
     fetch(`${API_BASE}/health`)
@@ -50,10 +50,25 @@ export default function App() {
       .catch((err) => console.error('Failed to load evals:', err))
   }, [])
 
-  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
-    if (file) {
-      setUploadedFile(file.name)
+    if (!file) return
+    setUploadedFile(file.name)
+    const formData = new FormData()
+    formData.append('file', file)
+    try {
+      const res = await fetch(`${API_BASE}/api/v1/upload`, {
+        method: 'POST',
+        body: formData,
+      })
+      const data = await res.json()
+      console.log('Upload result:', data)
+      // refresh seed list
+      fetch(`${API_BASE}/api/v1/seed-corpus`)
+        .then((r) => r.json())
+        .then((d) => setSeedFiles(d.files || []))
+    } catch (err) {
+      console.error('Upload failed:', err)
     }
   }
 

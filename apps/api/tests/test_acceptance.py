@@ -137,10 +137,12 @@ def test_upload_endpoint_placeholder():
     assert response.status_code == 200
     data = response.json()
     assert data["filename"] == "test_doc.pdf"
-    assert data["status"] == "uploaded"
+    assert data["status"] == "ingested"
 
 
 def test_query_endpoint():
+    from apps.api.services.ingestion import ingestion_service
+    ingestion_service.ingest_seed_corpus()
     response = client.post(
         "/api/v1/query",
         json={"query": "The motor does not start after overload reset. What should I check next?"},

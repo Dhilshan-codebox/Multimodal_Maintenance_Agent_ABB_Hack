@@ -1,0 +1,129 @@
+{
+  "scenario": {
+    "equipment": "Industrial Pump Motor (CentriFlow Pro 5000)",
+    "failure_mode": "Motor does not start after overload reset",
+    "primary_question": "The motor does not start after overload reset. What should I check next?"
+  },
+  "questions": [
+    {
+      "id": "EVAL-001",
+      "type": "positive",
+      "question": "The motor does not start after overload reset. What should I check next?",
+      "expected_answer_summary": "Check for mechanical lockout pin on OL-1, verify control fuse F2 continuity, inspect Phase Protection Relay PPR-2 for >2.5% phase unbalance or trip LED, check stator thermal switch cool-down (TS1/TS2 open until <90°C), and check resistance across OL-1 terminals 95-96 (<0.5 ohms).",
+      "expected_source_document": "DOC-MAN-2024-CF5K",
+      "expected_page_or_region": "Page 2, Section 2.2",
+      "safety_notes": "Perform LOTO and verify zero electrical potential before touching internal panel components.",
+      "expected_confidence_level": "HIGH"
+    },
+    {
+      "id": "EVAL-002",
+      "type": "positive",
+      "question": "What resistance should be measured across control circuit terminals 95 and 96 on overload relay OL-1 during normal conditions?",
+      "expected_answer_summary": "The normal resistance across OL-1 control terminals 95 and 96 is less than 0.5 Ohms. A reading above 1M Ohm indicates welded or broken contacts.",
+      "expected_source_document": "DOC-SOP-2024-OLR",
+      "expected_page_or_region": "Page 1, Step 4a",
+      "safety_notes": "Disconnect main 460V power before measuring terminal resistance.",
+      "expected_confidence_level": "HIGH"
+    },
+    {
+      "id": "EVAL-003",
+      "type": "positive",
+      "question": "If the Phase Protection Relay (PPR-2) shows a RED ALARM LED, what is the cause and what should be checked?",
+      "expected_answer_summary": "A RED ALARM LED on PPR-2 indicates line phase unbalance > 2.5% to 3% or phase loss. Check supply line fuses F1A, F1B, F1C in the main distribution panel and measure line voltage across L1-L2-L3.",
+      "expected_source_document": "DOC-TBL-2024-TSG",
+      "expected_page_or_region": "Page 1, Row 3",
+      "safety_notes": "Use CAT III 1000V rated multimeter for line voltage checks.",
+      "expected_confidence_level": "HIGH"
+    },
+    {
+      "id": "EVAL-004",
+      "type": "positive",
+      "question": "How long must the technician wait for stator thermal switches TS1/TS2 to cool down and automatically reset after an over-temperature trip?",
+      "expected_answer_summary": "Stator thermal switches open at 130°C and require a cool-down period of 20 to 30 minutes (or until temperature drops below 90°C) to automatically reset.",
+      "expected_source_document": "DOC-MAN-2024-CF5K",
+      "expected_page_or_region": "Page 2, Section 2.2 #4",
+      "safety_notes": "High stator temperature can cause insulation breakdown if restarted immediately; do not force start.",
+      "expected_confidence_level": "HIGH"
+    },
+    {
+      "id": "EVAL-005",
+      "type": "positive",
+      "question": "In the control circuit wiring diagram (DWG-ELEC-2024-CF5K), which safety components are wired in series before the M1 contactor coil?",
+      "expected_answer_summary": "Control fuse F2 (2A), ESTOP-1 switch, Overload NC contact OL-1 (95-96), Phase Protection Relay contact PPR-2 (11-14), and Stator Thermal Cutout TS1/TS2 are wired in series.",
+      "expected_source_document": "DWG-ELEC-2024-CF5K",
+      "expected_page_or_region": "Region B and Region C",
+      "safety_notes": "Ensure 120 VAC control voltage is isolated before inspecting terminal connections.",
+      "expected_confidence_level": "HIGH"
+    },
+    {
+      "id": "EVAL-006",
+      "type": "positive",
+      "question": "What is the full load current (FLC) and overload trip threshold setting for the CentriFlow Pro 5000 motor?",
+      "expected_answer_summary": "The full load current (FLC) is 118 Amperes at 460 V, and the default overload trip current threshold is 147.5 Amperes (125% of FLC).",
+      "expected_source_document": "DOC-SPEC-2024-CF5K",
+      "expected_page_or_region": "Page 1, Section 1 & Section 2",
+      "safety_notes": "Electrical parameter verification must be conducted by qualified personnel.",
+      "expected_confidence_level": "HIGH"
+    },
+    {
+      "id": "EVAL-007",
+      "type": "positive",
+      "question": "What rating and type of fuse is specified for control circuit fuse F2?",
+      "expected_answer_summary": "Control circuit fuse F2 is rated at 2A 250V fast-acting.",
+      "expected_source_document": "DOC-MAN-2024-CF5K",
+      "expected_page_or_region": "Page 2, Section 2.2 #2",
+      "safety_notes": "Never bypass fuse F2 with jumper wires.",
+      "expected_confidence_level": "HIGH"
+    },
+    {
+      "id": "EVAL-008",
+      "type": "positive",
+      "question": "What grease type and quantity are required for re-greasing the Drive End (DE) bearing, and what is the service interval?",
+      "expected_answer_summary": "Inject 15 grams of Mobilith SHC 220 synthetic grease into the Drive End (DE) bearing (6314-C3) every 2000 operating hours.",
+      "expected_source_document": "DOC-MAN-2024-CF5K",
+      "expected_page_or_region": "Page 3, Section 3.1",
+      "safety_notes": "Do not over-grease as over-greasing causes churning and overheating.",
+      "expected_confidence_level": "HIGH"
+    },
+    {
+      "id": "EVAL-009",
+      "type": "positive",
+      "question": "What maximum radial offset is allowed during shaft alignment for the CentriFlow Pro 5000?",
+      "expected_answer_summary": "The maximum radial alignment offset allowed is 0.05 mm (0.002 in).",
+      "expected_source_document": "DOC-MAN-2024-CF5K",
+      "expected_page_or_region": "Page 3, Section 3.2",
+      "safety_notes": "Ensure pump motor is completely de-energized and locked out prior to shaft alignment.",
+      "expected_confidence_level": "HIGH"
+    },
+    {
+      "id": "EVAL-010",
+      "type": "positive",
+      "question": "What maximum number of consecutive overload resets is permitted within a 1 hour window according to the field procedure?",
+      "expected_answer_summary": "No more than 3 consecutive resets are permitted within 1 hour. Repeated resets against an uncorrected fault will destroy stator windings.",
+      "expected_source_document": "DOC-SOP-2024-OLR",
+      "expected_page_or_region": "Page 2",
+      "safety_notes": "Repeated resets without fixing mechanical jam or short circuit can destroy motor stator windings.",
+      "expected_confidence_level": "HIGH"
+    },
+    {
+      "id": "EVAL-011",
+      "type": "negative",
+      "question": "How do you program the Modbus RTU RS-485 communication address on the digital motor controller?",
+      "expected_answer_summary": "UNSUPPORTED: The provided seed documentation covers electromechanical control (OL-1, PPR-2, M1) and does not contain information about Modbus RTU RS-485 digital communication protocols or controllers.",
+      "expected_source_document": "NONE",
+      "expected_page_or_region": "N/A",
+      "safety_notes": "N/A - Do not attempt unverified digital controller reprogramming.",
+      "expected_confidence_level": "ZERO"
+    },
+    {
+      "id": "EVAL-012",
+      "type": "negative",
+      "question": "What is the replacement procedure for the hydraulic variable displacement swashplate assembly on the pump?",
+      "expected_answer_summary": "UNSUPPORTED: CentriFlow Pro 5000 is a centrifugal slurry pump motor unit; it does not feature a hydraulic variable displacement swashplate assembly.",
+      "expected_source_document": "NONE",
+      "expected_page_or_region": "N/A",
+      "safety_notes": "N/A - Equipment structural mismatch.",
+      "expected_confidence_level": "ZERO"
+    }
+  ]
+}

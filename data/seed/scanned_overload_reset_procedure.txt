@@ -1,0 +1,37 @@
+CENTRIFLOW PRO 5000 - FIELD OVERLOAD RESET PROCEDURE
+Document ID: DOC-SOP-2024-OLR
+[SCANNED DOCUMENT - OPTICAL CHARACTER RECOGNITION EXTRACT]
+Page 1 of 2
+
+1.0 PURPOSE
+This standard operating procedure covers emergency field reset and troubleshooting following a thermal overload trip on CentriFlow Pro 5000 pump motors.
+
+2.0 FIELD RESET STEPS (POST-TRIP PROCEDURES)
+
+STEP 1: SAFETY LOCKOUT
+Verify pump motor isolation at disconnect switch DS-1. Apply LOTO lock and tag.
+
+STEP 2: STATOR COOL-DOWN PERIOD
+Wait at least 15 minutes before attempting thermal overload reset. Thermal bimetal elements require cooling time to return to normal closed position.
+
+STEP 3: OVERLOAD RELAY (OL-1) RESET
+Open Motor Starter Panel Enclosure MB-1.
+Locate Overload Relay OL-1.
+Inspect the indicator window:
+- RED indicates tripped status.
+- GREEN indicates normal / reset status.
+Press the BLUE manual reset button firmly until a audible CLICK is heard.
+
+STEP 4: IF MOTOR DOES NOT START AFTER OVERLOAD RESET
+If the overload reset button (Blue) is pressed and clicks, but motor fails to restart upon pressing Start Button (PB-2):
+a) Measure resistance across control circuit terminals 95 and 96 on OL-1. Normal reading: < 0.5 Ohms. If Infinite (>1M Ohm), OL-1 internal contacts are welded or spring mechanism is broken. Replace OL-1.
+b) Inspect Phase Protection Relay PPR-2 LED status:
+   - RED ALARM LED ON: Line phase unbalance > 3% or Phase Loss detected. Check supply fuses F1A, F1B, F1C in main distribution panel.
+   - YELLOW LED BLINKING: Stator over-temperature lockout active (TS1/TS2 contacts open). Allow additional 15 minutes for internal stator thermal switches to cool down.
+c) Verify Contactor M1 coil voltage: Apply multimeter across A1-A2 on Contactor M1 during start command.
+   - If 120 VAC is present but contactor does not pull in, contactor coil M1 is burned/open.
+   - If 0 VAC is present, trace circuit back through Emergency Stop (ESTOP-1), OL-1 (95-96), PPR-2 (11-14), and Start Button (PB-2).
+
+Page 2 of 2
+[SCAN NOTE: Stamp reads "APPROVED - FIELD MAINTENANCE DEPT 2024-01-15"]
+Warning: Do not attempt more than 3 consecutive resets within 1 hour. Repeated resets against an uncorrected mechanical jam or dead short will destroy motor stator windings.
